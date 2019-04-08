@@ -1,0 +1,11 @@
+(issf_api
+SSFInfo
+p0
+(dp1
+S'globalWordList'
+p2
+(lp3
+sS'sentenceList'
+p4
+(lp5
+sb.
