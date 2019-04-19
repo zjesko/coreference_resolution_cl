@@ -1,13 +1,7 @@
-import os
-import pickle
-
-with open('./pronouns/reflexives','rb') as f:
-    reflexives = pickle.load(f)
-
-def r1():
+def r1(var,res,li):
     sc=[]
     for word in var.globalWordList:
-        if word.word in reflexives:
+        if word.word in li:
             sc.append([word.sentenceNum, word.chunkNum])
     for _ in sc:
         s = var.sentenceList[_[0]]
@@ -39,24 +33,3 @@ def r1():
                 break
             x = s.nodeDict[x.nodeParent]
         res.append(fans)
-
-for f in os.listdir("DATA/PROCESSED-DATA/collection/"):
-    res=[]
-    try:
-        ofile=open("DATA/PROCESSED-DATA/collection/"+f,"rb")
-        var=pickle.load(ofile)    
-        r1()
-
-        for entry in res:
-            s = var.sentenceList[entry['sentence']]
-            c = s.chunkList[entry['pronoun']]
-            r = []
-            for i in entry['referents']:
-                r.append(s.chunkList[i])
-
-            cc = "".join([var.globalWordList[i].word for i in c.wordNumList])
-            rr = "".join([var.globalWordList[i].word for i in r[0].wordNumList])
-            print cc + " -> " + rr
-
-    except:
-        continue

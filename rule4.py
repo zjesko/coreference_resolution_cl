@@ -1,15 +1,9 @@
-import os
-import pickle
-
-with open('./pronouns/seconds','rb') as f:
-    seconds = pickle.load(f)
-
 complementizer = u'\u0915\u093f'
 
-def r5():
+def r4(var,res,li):
     sc=[]
     for word in var.globalWordList:
-        if word.word in seconds:
+        if word.word in li:
             sc.append([word.sentenceNum, word.chunkNum])
     for _ in sc:
         s = var.sentenceList[_[0]]
@@ -26,7 +20,7 @@ def r5():
                 x = s.nodeDict[x.nodeParent]
                 if x.nodeName[:1] == 'V':
                     for child in x.childList:
-                        if s.nodeDict[child].nodeRelation == 'k4':
+                        if s.nodeDict[child].nodeRelation == 'k1':
                             fans['referents'].append(s.nodeDict[child].chunkNum)
                             flag = 0
                 else:
@@ -36,24 +30,3 @@ def r5():
             x = s.nodeDict[x.nodeParent]
         res.append(fans)
 
-
-for f in os.listdir("DATA/PROCESSED-DATA/collection/"):
-    res=[]
-    try:
-        ofile=open("DATA/PROCESSED-DATA/collection/"+f,"rb")
-        var=pickle.load(ofile)
-        r5()
-
-        for entry in res:
-            s = var.sentenceList[entry['sentence']]
-            c = s.chunkList[entry['pronoun']]
-            r = []
-            for i in entry['referents']:
-                r.append(s.chunkList[i])
-
-            cc = "".join([var.globalWordList[i].word for i in c.wordNumList])
-            rr = "".join([var.globalWordList[i].word for i in r[0].wordNumList])
-            print cc + " -> " + rr
-
-    except:
-        continue
