@@ -1,27 +1,34 @@
+from __future__ import division
+import pickle
+import sys
+import os
+
+sys.path.insert(0,'./scripts/')
+
 from rule1 import r1
 from rule2 import r2
 from rule3 import r3
 from rule4 import r4
 from rule5 import r5
 
-import pickle
-import sys
-import os
 
-with open('./pronouns/reflexives','rb') as f:
+with open('./scripts/pronouns/reflexives','rb') as f:
     reflexives = pickle.load(f)
 
-with open('./pronouns/relatives','rb') as f:
+with open('./scripts/pronouns/relatives','rb') as f:
     relatives = pickle.load(f)
 
-with open('./pronouns/seconds','rb') as f:
+with open('./scripts/pronouns/seconds','rb') as f:
     seconds = pickle.load(f)
 
-with open('./pronouns/spatials','rb') as f:
+with open('./scripts/pronouns/spatials','rb') as f:
     spatials = pickle.load(f)
 
-with open('./pronouns/firsts','rb') as f:
+with open('./scripts/pronouns/firsts','rb') as f:
     firsts = pickle.load(f)
+
+total = 0
+found = 0
 
 for f in os.listdir("DATA/PROCESSED-DATA/collection/"):
     res=[]
@@ -56,7 +63,20 @@ for f in os.listdir("DATA/PROCESSED-DATA/collection/"):
                 rr = "".join([var.globalWordList[i].word for i in r[0].wordNumList])
             except:
                 pass
-            print cc + '->' + rr
+            total = total +1
+            if rr != "":
+                found = found + 1
+            print cc + '  ->  ' + rr
         print "\n\n"
     except:
         continue
+
+accuracy = found/total*100
+
+print "************************************"
+print "\n"
+print "Total Identified: " + str(total)
+print "Total Found: " + str(found)
+print "Accuracy: " + str(accuracy) + "%"
+print "\n"
+print "************************************"

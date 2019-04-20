@@ -8,60 +8,35 @@ statistical methods for coreference resolution in Hindi.
 
 ### Prerequisites
 
-YOu need to have python 2.7 installed on your system.
+You need to have python 2.7 installed on your system.
 
 ### Installing
 
-Open terminal and go to the directory in which project is stored.
-
-Make a virtual environment using `virtualenv .env`
-Activate that environment using `source .env/bin/activate
-Install all the dependencies using `pip install -r requirements.txt`
-
+- Run `git clone https://github.com/akshatcx/coreference_resolution_cl` to clone this repository.
+- Run `cd coreference_resolution_cl` to enter the project directory
+- Run `virtualenv -p python=/usr/bin/python2.7 env` to create a virtual environment for the project.
+- Run `source env/bin/activate` to activate the environment
+- Run `pip install -r requirements.txt` to install all the dependencies.
 
 ## Running the tests
 
-```
-python coref.py
-```
+- Run `python coref.py` to generate the coreference output
+
 
 ### Output
 
-We will be getting our data as the output with its respective analysis in which we are showing all the pronouns and the word they are refering to.
+We will be getting our data as the output with its respective analysis. It shows the individual pronouns and the word their possible referents.
 
-```
-
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
- 
 
 ## Authors
 
-* **Akshat Gahoi** - *IIIT Hyderabad* 
-* **Akshat Chajer** - *IIIT Hyderabad*
+* **Akshat Gahoi** - IIIT Hyderabad
+* **Akshat Chhajer** - IIIT Hyderabad
 
 
 ## Acknowledgments
 
-* Thanks to Dr. Dipti Misra Sharma
-* Mentored by Anirudh Dahiya
+* Thanks to Dr. Dipti Misra Sharma (LTRC IIIT Hyderabad)
+* Mentored by Anirudh Dahiya (LTRC IIIT Hyderabad)
 * Inspired from paper "A Hybrid Approach for Anaphora Resolution in Hindi"(https://www.aclweb.org/anthology/I13-1130)
 
