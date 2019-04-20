@@ -6,25 +6,18 @@ statistical methods for coreference resolution in Hindi.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-
-```
+YOu need to have python 2.7 installed on your system.
 
 ### Installing
 
 Open terminal and go to the directory in which project is stored.
 
-```
-pip install -r requirements.txt
-```
+Make a virtual environment using `virtualenv .env`
+Activate that environment using `source .env/bin/activate
+Install all the dependencies using `pip install -r requirements.txt`
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
